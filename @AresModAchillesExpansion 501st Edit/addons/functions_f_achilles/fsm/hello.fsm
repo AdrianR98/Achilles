@@ -1,0 +1,92 @@
+/*%FSM<COMPILE "E:\Program Files\games\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, hello">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-60.778168,-329.877380,29.221832,-279.877380,0.000000,"Init"};
+item1[] = {"End",1,250,-60.597687,46.828751,29.402344,96.828751,0.000000,"End"};
+item2[] = {"_",8,218,-60.147430,-239.282547,29.852570,-189.282562,1.000000,""};
+item3[] = {"Hello_World",2,250,-60.016479,-150.791931,29.983536,-100.791931,0.000000,"Hello" \n "World"};
+item4[] = {"_",8,218,-60.027313,-52.156433,29.972687,-2.156433,0.000000,""};
+link0[] = {0,2};
+link1[] = {2,3};
+link2[] = {3,4};
+link3[] = {4,1};
+globals[] = {0.000000,0,0,0,0,640,480,1,26,6316128,1,-227.461761,483.610870,267.545990,-409.811951,441,868,1};
+window[] = {0,-1,-1,-1,-1,808,208,1648,208,1,459};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "hello";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"systemChat ""INIT"";" \n
+                         "_skills_to_edit = [""courage"",""commanding""];" \n
+                         "_old_skill_values = [];" \n
+                         "_abilities_to_edit = [""FSM""];" \n
+                         "_abilities_to_edit = [""AUTOCOMBAT"",""COVER"",""SUPPRESSION"",""TARGET"",""FSM""];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 2;
+                                        priority = 1.000000;
+                                        to="Hello_World";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "End">*/
+                class End
+                {
+                        name = "End";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"systemChat ""END"""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Hello_World">*/
+                class Hello_World
+                {
+                        name = "Hello_World";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"""Hello World!"" remoteExecCall [""systemChat""];" \n
+                         "diag_log ""Hello World!"";" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="End";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "End",
+        };
+};
+/*%FSM</COMPILE>*/
